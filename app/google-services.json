@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "991071860250",
+    "firebase_url": "https://mystic-braid-237016.firebaseio.com",
+    "project_id": "mystic-braid-237016",
+    "storage_bucket": "mystic-braid-237016.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991071860250:android:3a37690f95eefffb",
+        "android_client_info": {
+          "package_name": "edu.gwu.calendarproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991071860250-7l9637elfcd8c7kbtcsf358h0dhdq6vs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gwu.calendarproject",
+            "certificate_hash": "97c5e4bf23cf5ff718c47614a71456d5983b1520"
+          }
+        },
+        {
+          "client_id": "991071860250-t80gick3npqfte5qf38m0kspdu015jvt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoabal1KDmPm86_e3h3vhsqAgZ5_xXMxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991071860250-t80gick3npqfte5qf38m0kspdu015jvt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
