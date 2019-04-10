@@ -10,16 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44c14673-1893-4228-9f60-2f5d928dc604" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/LoginActivity.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -110,7 +100,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="17" />
-          <entry key="kt" value="1583" />
+          <entry key="kt" value="1631" />
           <entry key="txt" value="86" />
           <entry key="xml" value="10" />
         </counts>
@@ -118,7 +108,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="17" />
-          <entry key="Kotlin" value="1583" />
+          <entry key="Kotlin" value="1631" />
           <entry key="PLAIN_TEXT" value="86" />
           <entry key="XML" value="10" />
         </counts>
@@ -130,8 +120,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/LoginActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-245">
-              <caret line="64" column="58" lean-forward="true" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
+            <state relative-caret-position="250">
+              <caret line="97" column="44" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
               <folding>
                 <element signature="e#33#686#0" expanded="true" />
               </folding>
@@ -2848,8 +2838,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/LoginActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-245">
-          <caret line="64" column="58" lean-forward="true" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
+        <state relative-caret-position="250">
+          <caret line="97" column="44" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
           <folding>
             <element signature="e#33#686#0" expanded="true" />
           </folding>
