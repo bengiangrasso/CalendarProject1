@@ -24,12 +24,14 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
     private var mGoogleApiClient: GoogleApiClient? = null
 
     private var login: Button? = null
+    private var logout: Button? = null
 
     private val requestCode = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         login = findViewById(R.id.loginButton)
+        logout = findViewById(R.id.logoutButton)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -38,9 +40,13 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
         val account = GoogleSignIn.getLastSignedInAccount(this)
-        if(account != null) {
+        if(account != null){
+            updateUI(true)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            }
+        else {
+            updateUI(false)
         }
         mGoogleApiClient = GoogleApiClient.Builder(this)
             .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
@@ -54,9 +60,29 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
             startActivity(intent)
 
         })
+
+        logout?.setOnClickListener(View.OnClickListener{
+            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                object: ResultCallback<Status> {
+                    override fun onResult(status: Status){
+                        updateUI(false)
+                    }
+                }
+            )
+        })
     }
     override fun onConnectionFailed(p0: ConnectionResult) {
         Log.d("Error", "onConnectionFailed: " + p0)
+    }
+    private fun updateUI(isLogin: Boolean) {
+        if (isLogin) {
+            login?.visibility = View.GONE
+            logout?.visibility = View.VISIBLE
+        }
+        else {
+            login?.visibility = View.VISIBLE
+            logout?.visibility = View.GONE
+        }
     }
 
 }
