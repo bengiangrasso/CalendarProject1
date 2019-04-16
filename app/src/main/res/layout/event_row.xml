@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content" android:id="@+id/linearLayout">
+    <TextView
+            android:text="Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title" android:textStyle="bold"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/alertImage" android:layout_marginStart="8dp"
+            android:textSize="18sp"/>
+    <TextView
+            android:text="Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/description" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/title" app:layout_constraintStart_toEndOf="@+id/alertImage"
+            android:layout_marginStart="8dp"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/alertImage"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+            android:text="Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/temperature" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/alertImage"/>
+    <TextView
+            android:text="Precipitation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/precipitation"
+            app:layout_constraintStart_toEndOf="@+id/temperature" android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/alertImage"/>
+    <TextView
+            android:text="Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/temperature" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"/>
+    <TextView
+            android:text="endTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/endTime"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/precipitation" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
+    <TextView
+            android:text="-"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/temperature" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/endTime"/>
+    <TextView
+            android:text="startTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/startTime"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/temperature" app:layout_constraintEnd_toStartOf="@+id/textView8"
+            android:layout_marginEnd="8dp"/>
+</android.support.constraint.ConstraintLayout>

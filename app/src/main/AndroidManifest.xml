@@ -16,7 +16,11 @@
             android:theme="@style/AppTheme">
         <activity
                 android:name=".MainActivity"
-                android:label="@string/title_activity_login">
+                android:label="Calendar Project">
+        </activity>
+        <activity
+                android:name=".AddEventActivity"
+                android:label="Create a New Event">
         </activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
