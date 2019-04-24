@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
             android:allowBackup="true"
@@ -16,7 +17,15 @@
             android:theme="@style/AppTheme">
         <activity
                 android:name=".MainActivity"
-                android:label="@string/title_activity_login">
+                android:label="Calendar Project">
+        </activity>
+        <activity
+                android:name=".AddEventActivity"
+                android:label="Create a New Event">
+        </activity>
+        <activity
+                android:name=".CalendarActivity"
+                android:label="Your Calendar">
         </activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
