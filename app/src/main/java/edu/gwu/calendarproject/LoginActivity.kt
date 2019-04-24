@@ -3,9 +3,11 @@ package edu.gwu.calendarproject
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.ConnectionResult
@@ -15,6 +17,9 @@ import com.google.android.gms.common.api.Status
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.tasks.Task
+import com.google.android.gms.common.api.ApiException
+
+
 
 
 
@@ -29,7 +34,7 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
     private var logout: Button? = null
     private lateinit var noAccountButton: Button
     private val RC_SIGN_IN = 9001
-    private val requestCode = 0;
+    private val requestCode = 102;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -75,12 +80,21 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
             )
         })
     }
-    private fun handleSignInResult(result: GoogleSignInResult){
-        if(result.isSuccess){
-            val acct = result.getSignInAccount()
-            val acctName = acct!!.getDisplayName()
-            val acctEmail = acct!!.getEmail()
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            val account = completedTask.getResult(ApiException::class.java)
+
+            // Signed in successfully, show authenticated UI.
+            updateUI(true)
+            Toast.makeText(this, "Coming back from Google Sign In: Success", Toast.LENGTH_SHORT).show()
+        } catch (e: ApiException) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            updateUI(false)
+            Toast.makeText(this, "Coming back from Google Sign In: Fail", Toast.LENGTH_SHORT).show()
         }
+
     }
     override fun onConnectionFailed(p0: ConnectionResult) {
         Log.d("Error", "onConnectionFailed: " + p0)
@@ -100,11 +114,12 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         super.onActivityResult(requestCode, resultCode, data)
 
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == 102) {
+
             // The Task returned from this call is always completed, no need to attach
             // a listener.
-            //val task = GoogleSignInResult.getSignedInAccountFromIntent(data)
-            //handleSignInResult(task)
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            handleSignInResult(task)
         }
     }
 
