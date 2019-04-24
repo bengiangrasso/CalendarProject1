@@ -52,7 +52,7 @@ class WeatherManager {
                     for (i in 0 until getWeather.length()) {
                         val weather = getWeather.getJSONObject(i)
                         val tempAPI = weather.getString("temperatureHigh")
-                        val weatherAPI = weather.getString("precipType")
+                        val weatherAPI = weather.getString("summary")
                         events.add(
                             Event(
                                 title = title,

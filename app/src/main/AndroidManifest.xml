@@ -20,10 +20,6 @@
                 android:label="Calendar Project">
         </activity>
         <activity
-                android:name=".AddEventActivity"
-                android:label="Create a New Event">
-        </activity>
-        <activity
                 android:name=".CalendarActivity"
                 android:label="Your Calendar">
         </activity>
