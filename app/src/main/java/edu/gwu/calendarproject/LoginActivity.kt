@@ -18,10 +18,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.common.api.ApiException
-
-
-
-
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
@@ -29,19 +29,25 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
 
     private var mGoogleSignInClient: GoogleSignInClient? = null
     private var mGoogleApiClient: GoogleApiClient? = null
+    private lateinit var firebaseDatabase: FirebaseDatabase
 
     private var login: Button? = null
     private var logout: Button? = null
     private lateinit var noAccountButton: Button
     private val RC_SIGN_IN = 9001
     private val requestCode = 102;
+    private lateinit var newUser: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        firebaseDatabase = FirebaseDatabase.getInstance()
+
         login = findViewById(R.id.loginButton)
         logout = findViewById(R.id.logoutButton)
         noAccountButton = findViewById(R.id.noAccount)
         noAccountButton.setOnClickListener(View.OnClickListener {
+            intent.putExtra("email", "email")
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         })
@@ -52,9 +58,14 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
         val account = GoogleSignIn.getLastSignedInAccount(this)
+        val email = account!!.email
+        var emailNew = email!!.dropLast(10)
+        val reference = firebaseDatabase.getReference("Users/$emailNew")
+        reference.child("email").setValue(email)
         if(account != null){
             updateUI(true)
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("email", email)
             startActivity(intent)
             }
         else {
@@ -89,6 +100,7 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
             updateUI(true)
             Toast.makeText(this, "Coming back from Google Sign In: Success", Toast.LENGTH_SHORT).show()
         } catch (e: ApiException) {
+            Log.d("Error","Error:         " + e)
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             updateUI(false)
