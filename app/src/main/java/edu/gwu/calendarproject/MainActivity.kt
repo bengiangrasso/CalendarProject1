@@ -177,7 +177,8 @@ class MainActivity : AppCompatActivity() {
                     }
                     listSize++
                 }
-
+                recyclerView.adapter = MainAdapter(events)
+                recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
             }
         })
         calendarButton.setOnClickListener{
