@@ -27,13 +27,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var calendarButton: ImageButton
     private lateinit var option: Spinner
     private lateinit var result: TextView
-
     private lateinit var optionS: Spinner
     private lateinit var resultS: TextView
-
     private lateinit var optionE: Spinner
     private lateinit var resultE: TextView
-
     private lateinit var optionYear: Spinner
     private lateinit var resultYear: TextView
     private lateinit var optionMonth: Spinner
@@ -55,16 +52,29 @@ class MainActivity : AppCompatActivity() {
     private lateinit var year : String
     private lateinit var month : String
     private lateinit var day : String
+
+    private lateinit var gHome : String
+    private lateinit var gAway : String
+    private lateinit var gStartTime : String
+    private lateinit var gEndTime : String
+    private lateinit var gYear : String
+    private lateinit var gMonth : String
+    private lateinit var gDay : String
+    private lateinit var gStadium : String
+    private lateinit var gCity : String
+    private lateinit var gState : String
+    var pos = 0
+    private lateinit var options : Array<String?>
     private lateinit var firebaseDatabase: FirebaseDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // get email from login page
         val email = intent.getStringExtra("email")
-
-
-
         firebaseDatabase = FirebaseDatabase.getInstance()
 
+        // initialize objects from activity_main
         recyclerView = findViewById(R.id.recyclerView)
         add = findViewById(R.id.add)
         edit = findViewById(R.id.edit)
@@ -72,6 +82,7 @@ class MainActivity : AppCompatActivity() {
         calendarButton = findViewById(R.id.calendarButton)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        // welcome dialog
         val dialog = AlertDialog.Builder(this@MainActivity)
             dialog.setTitle("Welcome!")
             dialog.setMessage("Please schedule any new events. Click the settings button to sync this application with your google calendar.")
@@ -80,19 +91,68 @@ class MainActivity : AppCompatActivity() {
             }
             dialog.show()
 
+        // button to add an MLB event through a dialog
         edit.setOnClickListener{
+            // initialize objects from activity_new_event
             val dialog = Dialog(this@MainActivity)
             dialog.setContentView(R.layout.activity_new_sport)
             submit2 = dialog.findViewById(R.id.submitButton)
             cancel2 = dialog.findViewById(R.id.cancelButton)
             option = dialog.findViewById(R.id.spinner)
             result = dialog.findViewById(R.id.result)
-            val options = mutableListOf<String>()
+
+            // use weather api call
             weatherManager.retrieveGame(
                 successCallback = { newEvents ->
                     runOnUiThread {
-                        for (i in 0..(newEvents.size-1)){
-                            options.add(newEvents.get(i))
+
+                        // add event strings into string array
+
+                        options = arrayOfNulls(newEvents.size / 10)
+                        var count = 0;
+                        for (i in 0..(newEvents.size-1) step 10){
+                            gHome = newEvents.get(i)
+                            gAway = newEvents.get(i+1)
+                            gStartTime = newEvents.get(i+2)
+                            gEndTime = newEvents.get(i+3)
+                            gCity = newEvents.get(i+4)
+                            gState = newEvents.get(i+5)
+                            gStadium = newEvents.get(i+6)
+                            gYear = newEvents.get(i+7)
+                            gMonth = newEvents.get(i+8)
+                            gDay = newEvents.get(i+9)
+
+                            var str = "$gHome vs. $gAway. $gStartTime to $gEndTime, $gYear/$gMonth/$gDay"
+                            if(i == 0)
+                                options[i] = str
+                            else
+                                options[i-(count*9)] = str
+                            count++
+                        }
+
+                        // spinner used to display upcoming game information
+                        option.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, options)
+                        option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                                result.text = "Please Select a Game."
+                            }
+
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                result.text = options.get(position)
+                                pos = position
+                                gHome = newEvents.get(pos * 10)
+                                gAway = newEvents.get(pos * 10 + 1)
+                                gStartTime = newEvents.get(pos * 10 + 2)
+                                gEndTime = newEvents.get(pos * 10 + 3)
+                                gCity = newEvents.get(pos * 10 + 4)
+                                gState = newEvents.get(pos * 10 + 5)
+                                gStadium = newEvents.get(pos * 10 + 6)
+                                gYear = newEvents.get(pos * 10 + 7)
+                                gMonth = newEvents.get(pos * 10 + 8)
+                                gDay = newEvents.get(pos * 10 + 9)
+                                Toast.makeText(this@MainActivity, "$gHome, $gAway, $gStartTime, $gEndTime, $gCity, $gState, $gStadium, $gYear, $gMonth, $gDay", Toast.LENGTH_LONG).show()
+                            }
+
                         }
                     }
                 },
@@ -107,20 +167,42 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             )
-            option.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, options)
-            option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                    result.text = "Please Select a Game."
-                }
-
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    result.text = options.get(position)
-
-                }
-
-            }
             submit2.setOnClickListener {
+                val dateFinal = "$gYear/$gMonth/$gDay"
 
+                // convert date string to UNIX time
+                val dateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH)
+                val dateNew = dateFormat.parse(dateFinal)
+                var millis = dateNew.time
+                millis /= 1000
+                weatherManager.retrieveWeather(
+                    primaryKey = getString(R.string.key),
+                    title = "$gHome vs. $gAway",
+                    description = "$gStadium, $gCity, $gState",
+                    date = dateFinal,
+                    millis = millis,
+                    startTime = gStartTime,
+                    endTime = gEndTime,
+                    successCallback = { newEvents ->
+                        runOnUiThread{
+                            // remove unwanted chars from email and push events in that object on Firebase
+                            var emailNew = email.dropLast(10)
+                            val reference = firebaseDatabase.getReference("Users/$emailNew")
+                            for (i in 0..newEvents.size-1)
+                                reference.push().setValue(newEvents.get(i))
+                        }
+                    },
+                    errorCallback = {
+                        runOnUiThread{
+                            AlertDialog.Builder(this)
+                                .setTitle("There was an error creating the event.")
+                                .setNegativeButton("Go Back") { dialog, _ ->
+                                    dialog.dismiss()
+                                }
+                                .show()
+                        }
+                    }
+                )
                 dialog.dismiss()
             }
 
@@ -130,22 +212,23 @@ class MainActivity : AppCompatActivity() {
 
             dialog.show()
         }
+
+        // button to add your own event with a dialog
         add.setOnClickListener{
             val dialog = Dialog(this@MainActivity)
             dialog.setContentView(R.layout.activity_new_event)
 
+            // initialize objects from activity_new_event
             title = dialog.findViewById(R.id.title)
             description = dialog.findViewById(R.id.description)
             startTime = dialog.findViewById(R.id.startTime)
             endTime = dialog.findViewById(R.id.endTime)
             submit = dialog.findViewById(R.id.submitButton)
             cancel = dialog.findViewById(R.id.cancelButton)
-
             optionS = dialog.findViewById(R.id.spinnerS)
             resultS = dialog.findViewById(R.id.resultS)
             optionE = dialog.findViewById(R.id.spinnerE)
             resultE = dialog.findViewById(R.id.resultE)
-
             optionYear = dialog.findViewById(R.id.spinnerYear)
             resultYear = dialog.findViewById(R.id.resultYear)
             optionMonth = dialog.findViewById(R.id.spinnerMonth)
@@ -153,10 +236,13 @@ class MainActivity : AppCompatActivity() {
             optionDay = dialog.findViewById(R.id.spinnerDay)
             resultDay = dialog.findViewById(R.id.resultDay)
 
+            // arrays that hold spinner data
             val yearOptions = arrayOf("2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030")
             val monthOptions = arrayOf("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
             val dayOptions = arrayOf("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
             val options = arrayOf("am", "pm")
+
+            // spinner for selecting year
             optionYear.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, yearOptions)
             optionYear.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -169,6 +255,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+
+            // spinner for selecting month
             optionMonth.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, monthOptions)
             optionMonth.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -181,6 +269,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+
+            // spinner for selecting day
             optionDay.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, dayOptions)
             optionDay.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -193,6 +283,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+
+            // spinner for selecting start time
             optionS.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, options)
             optionS.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -205,6 +297,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+
+            // spinner for selecting end time
             optionE.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, options)
             optionE.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -217,12 +311,16 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+
+            // submit data entered in the form
             submit.setOnClickListener {
                 var sNum = startTime.getText().toString()
                 var eNum = endTime.getText().toString()
                 var finalS = "$sNum $sTime"
                 var finalE = "$eNum $eTime"
                 val dateFinal = "$year/$month/$day"
+
+                // convert date string to UNIX time
                 val dateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH)
                 val dateNew = dateFormat.parse(dateFinal)
                 var millis = dateNew.time
@@ -237,6 +335,7 @@ class MainActivity : AppCompatActivity() {
                     endTime = finalE,
                     successCallback = { newEvents ->
                         runOnUiThread{
+                            // remove unwanted chars from email and push events in that object on Firebase
                             var emailNew = email.dropLast(10)
                             val reference = firebaseDatabase.getReference("Users/$emailNew")
                             for (i in 0..newEvents.size-1)
@@ -263,6 +362,8 @@ class MainActivity : AppCompatActivity() {
 
             dialog.show()
         }
+
+        // retrieve events from Firebase
         var emailNew = email.dropLast(10)
         val reference = firebaseDatabase.getReference("Users/$emailNew")
         reference.addValueEventListener(object : ValueEventListener {
@@ -302,15 +403,20 @@ class MainActivity : AppCompatActivity() {
                 recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
             }
         })
+
+        // intent to calendar activity
         calendarButton.setOnClickListener{
             val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
         }
+
+        // intent back to the login page
         logout.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
+        // display all events in the recyclerView
         recyclerView.adapter = MainAdapter(events)
         recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
 

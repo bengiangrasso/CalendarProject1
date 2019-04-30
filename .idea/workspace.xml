@@ -21,16 +21,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/LoginActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/WeatherManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/WeatherManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_new_event.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_new_event.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/event_row.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/event_row.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_new_sport.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_new_sport.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ncaa_row.xml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,8 +101,8 @@
           <entry key="gradle" value="5" />
           <entry key="iml" value="2" />
           <entry key="json" value="2" />
-          <entry key="kt" value="25" />
-          <entry key="xml" value="33" />
+          <entry key="kt" value="26" />
+          <entry key="xml" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -115,23 +111,23 @@
           <entry key="Groovy" value="5" />
           <entry key="IDEA_MODULE" value="2" />
           <entry key="JSON" value="2" />
-          <entry key="Kotlin" value="25" />
-          <entry key="XML" value="33" />
+          <entry key="Kotlin" value="26" />
+          <entry key="XML" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="30" />
-          <entry key="kt" value="11521" />
-          <entry key="txt" value="795" />
+          <entry key="kt" value="13908" />
+          <entry key="txt" value="801" />
           <entry key="xml" value="229" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="30" />
-          <entry key="Kotlin" value="11521" />
-          <entry key="PLAIN_TEXT" value="795" />
+          <entry key="Kotlin" value="13908" />
+          <entry key="PLAIN_TEXT" value="801" />
           <entry key="XML" value="229" />
         </counts>
       </usages-collector>
@@ -142,8 +138,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/LoginActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="60" column="20" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+            <state relative-caret-position="240">
+              <caret line="106" column="12" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="100" />
               <folding>
                 <element signature="e#33#1022#0" expanded="true" />
               </folding>
@@ -152,19 +148,29 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainActivity.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/Event.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2907">
-              <caret line="73" selection-start-line="73" selection-end-line="73" />
-              <folding>
-                <element signature="e#33#607#0" expanded="true" />
-                <element signature="e#10497#10520#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="225">
+              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainActivity.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="152" column="185" selection-start-line="152" selection-start-column="185" selection-end-line="152" selection-end-column="185" />
+              <folding>
+                <element signature="e#33#607#0" expanded="true" />
+                <element signature="e#7951#7974#0" expanded="true" />
+                <element signature="e#15129#15152#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/CalendarActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -174,16 +180,6 @@
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -199,7 +195,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainAdapter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="213">
               <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="e#33#231#0" expanded="true" />
@@ -209,20 +205,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_new_sport.xml">
-          <provider selected="true" editor-type-id="android-designer2" />
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="531">
-              <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/WeatherManager.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="105" column="94" selection-start-line="105" selection-start-column="94" selection-end-line="105" selection-end-column="94" />
+            <state relative-caret-position="644">
+              <caret line="114" column="37" selection-start-line="114" selection-start-column="37" selection-end-line="114" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -233,6 +219,26 @@
           <provider editor-type-id="text-editor">
             <state>
               <caret selection-end-line="167" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_new_sport.xml">
+          <provider selected="true" editor-type-id="android-designer2" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="720">
+              <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/event_row.xml">
+          <provider selected="true" editor-type-id="android-designer2" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -2676,7 +2682,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/Event.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_new_baseball.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/event_row.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/ncaa_key.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/mlb_key.xml" />
@@ -2684,9 +2689,10 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/SpinnerActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/event_row.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_new_event.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_new_sport.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/WeatherManager.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_new_event.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainActivity.kt" />
       </list>
     </option>
@@ -2894,10 +2900,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.5008026" side_tool="true" weight="0.24964234" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49919742" visible="true" weight="0.24678111" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49919742" visible="true" weight="0.24678111" />
       <window_info id="Structure" order="2" sideWeight="0.5008026" side_tool="true" weight="0.24964234" />
       <window_info id="Build Variants" order="3" sideWeight="0.50089765" side_tool="true" weight="0.24964234" />
       <window_info id="Image Layers" order="4" />
@@ -2910,8 +2915,8 @@
       <window_info anchor="bottom" id="Terminal" order="2" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5007153" side_tool="true" weight="0.53975904" />
       <window_info anchor="bottom" id="Build" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="5" weight="0.32891566" />
-      <window_info anchor="bottom" id="Logcat" order="6" sideWeight="0.49928468" visible="true" weight="0.040963855" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.41084337" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="6" sideWeight="0.49928468" visible="true" weight="0.15783133" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.32891566" />
       <window_info anchor="bottom" id="Debug" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
@@ -3022,25 +3027,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ncaa_row.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/Event.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/event_row.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="5" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/ncaa_key.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -3089,46 +3075,15 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/LoginActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="60" column="20" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
-          <folding>
-            <element signature="e#33#1022#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ncaa_row.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_new_sport.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/event_row.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#33#231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/WeatherManager.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="105" column="94" selection-start-line="105" selection-start-column="94" selection-end-line="105" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+        <state relative-caret-position="285">
+          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -3140,14 +3095,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainActivity.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_new_sport.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/Event.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2907">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
-          <folding>
-            <element signature="e#33#607#0" expanded="true" />
-            <element signature="e#10497#10520#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -3157,6 +3116,53 @@
           <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
           <folding>
             <element signature="e#33#227#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/LoginActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="106" column="12" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="100" />
+          <folding>
+            <element signature="e#33#1022#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#33#231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/WeatherManager.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="114" column="37" selection-start-line="114" selection-start-column="37" selection-end-line="114" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gwu/calendarproject/MainActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="152" column="185" selection-start-line="152" selection-start-column="185" selection-end-line="152" selection-end-column="185" />
+          <folding>
+            <element signature="e#33#607#0" expanded="true" />
+            <element signature="e#7951#7974#0" expanded="true" />
+            <element signature="e#15129#15152#0" expanded="true" />
           </folding>
         </state>
       </provider>

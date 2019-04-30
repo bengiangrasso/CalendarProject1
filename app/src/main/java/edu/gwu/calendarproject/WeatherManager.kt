@@ -103,7 +103,16 @@ class WeatherManager {
                         val day = data.getString("day")
                         val home = data.getString("home")
                         val away = data.getString("away")
-                        events.add("$home vs. $away. $startTime to $endTime, $year/$month/$day")
+                        events.add(home)
+                        events.add(away)
+                        events.add(startTime)
+                        events.add(endTime)
+                        events.add(city)
+                        events.add(state)
+                        events.add(stadium)
+                        events.add(year)
+                        events.add(month)
+                        events.add(day)
                     }
                     successCallback(events)
 
