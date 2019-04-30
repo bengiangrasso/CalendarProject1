@@ -52,8 +52,8 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
             startActivity(intent)
         })
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build()
+            .requestEmail()
+            .build()
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
@@ -65,9 +65,9 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         if(account != null){
             updateUI(true)
             val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("email", email)
+            intent.putExtra("email", "$email")
             startActivity(intent)
-            }
+        }
         else {
             updateUI(false)
         }
