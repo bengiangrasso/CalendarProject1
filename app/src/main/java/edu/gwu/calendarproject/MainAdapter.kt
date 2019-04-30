@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
 
-class MainAdapter constructor(private val metroAlerts: List<Event>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter constructor(private val eventList: List<Event>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -16,10 +16,10 @@ class MainAdapter constructor(private val metroAlerts: List<Event>) : RecyclerVi
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = metroAlerts.size
+    override fun getItemCount(): Int = eventList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentEvent = metroAlerts[position]
+        val currentEvent = eventList[position]
 
         holder.titleTextView.text = currentEvent.title
         holder.descriptionTextView.text = currentEvent.description

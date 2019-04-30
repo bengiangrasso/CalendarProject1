@@ -51,7 +51,7 @@ class WeatherManager {
                     val getWeather = JSONObject(responseString).getJSONObject("daily").getJSONArray("data")
                     for (i in 0 until getWeather.length()) {
                         val weather = getWeather.getJSONObject(i)
-                        val tempAPI = weather.getString("temperatureHigh")
+                        val tempHigh = weather.getString("temperatureHigh")
                         val weatherAPI = weather.getString("summary")
                         events.add(
                             Event(
@@ -60,10 +60,50 @@ class WeatherManager {
                                 date = date,
                                 startTime = startTime,
                                 endTime = endTime,
-                                temperature = tempAPI,
+                                temperature = tempHigh,
                                 precipitation = weatherAPI
                             )
                         )
+                    }
+                    successCallback(events)
+
+                } else {
+                    errorCallback(Exception("Search weather call failed."))
+                }
+            }
+        })
+    }
+
+    fun retrieveGame(
+        successCallback: (List<String>) -> Unit,
+        errorCallback: (Exception) -> Unit
+    ){
+        val request = Request.Builder()
+            // foggy bottom lat and lon
+            .url("http://www.mocky.io/v2/5cc7da603000006500055d8d")
+            .build()
+        okHttpClient.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                errorCallback(e)
+            }
+            override fun onResponse(call: Call, response: Response) {
+                val events = mutableListOf<String>()
+                val responseString = response.body()?.string()
+                if (response.isSuccessful && responseString != null) {
+                    val getData = JSONObject(responseString).getJSONArray("games")
+                    for (i in 0 until getData.length()) {
+                        val data = getData.getJSONObject(i)
+                        val city = data.getString("city")
+                        val state = data.getString("state")
+                        val stadium = data.getString("stadium")
+                        val startTime = data.getString("startTime")
+                        val endTime = data.getString("endTime")
+                        val year = data.getString("year")
+                        val month = data.getString("month")
+                        val day = data.getString("day")
+                        val home = data.getString("home")
+                        val away = data.getString("away")
+                        events.add("$home vs. $away. $startTime to $endTime, $year/$month/$day")
                     }
                     successCallback(events)
 
