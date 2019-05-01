@@ -8,7 +8,6 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.support.v7.widget.DividerItemDecoration
 import android.widget.*
 import com.google.firebase.database.DataSnapshot
@@ -25,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var edit: ImageButton
     private lateinit var logout: Button
     private lateinit var calendarButton: ImageButton
+    private lateinit var languageButton: ImageButton
     private lateinit var option: Spinner
     private lateinit var result: TextView
     private lateinit var optionS: Spinner
@@ -64,8 +64,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var gCity : String
     private lateinit var gState : String
     var pos = 0
+    private lateinit var spinnerLang : Spinner
+    private lateinit var resultLang : TextView
     private lateinit var options : Array<String?>
-    private lateinit var firebaseDatabase: FirebaseDatabase
+    private lateinit var firebaseDatabase : FirebaseDatabase
+    private lateinit var okay : Button
+    var language = "English"
+    var languageArray = arrayOf("English", "Spanish")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -80,6 +85,7 @@ class MainActivity : AppCompatActivity() {
         edit = findViewById(R.id.edit)
         logout = findViewById(R.id.logout)
         calendarButton = findViewById(R.id.calendarButton)
+        languageButton = findViewById(R.id.language)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // welcome dialog
@@ -91,6 +97,29 @@ class MainActivity : AppCompatActivity() {
             }
             dialog.show()
 
+        languageButton.setOnClickListener {
+            val dialog = Dialog(this@MainActivity)
+            dialog.setContentView(R.layout.activity_language)
+            spinnerLang = dialog.findViewById(R.id.spinnerLang)
+            resultLang = dialog.findViewById(R.id.resultLang)
+            okay = dialog.findViewById(R.id.okay)
+            spinnerLang.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, languageArray)
+            spinnerLang.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    resultLang.text = "English"
+                }
+
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    resultLang.text = languageArray.get(position)
+                }
+
+            }
+            okay.setOnClickListener{
+                dialog.dismiss()
+            }
+            dialog.show()
+
+        }
         // button to add an MLB event through a dialog
         edit.setOnClickListener{
             // initialize objects from activity_new_event
@@ -99,7 +128,7 @@ class MainActivity : AppCompatActivity() {
             submit2 = dialog.findViewById(R.id.submitButton)
             cancel2 = dialog.findViewById(R.id.cancelButton)
             option = dialog.findViewById(R.id.spinner)
-            result = dialog.findViewById(R.id.result)
+            result = dialog.findViewById(R.id.resultLang)
 
             // use weather api call
             weatherManager.retrieveGame(
@@ -231,7 +260,7 @@ class MainActivity : AppCompatActivity() {
             resultE = dialog.findViewById(R.id.resultE)
             optionYear = dialog.findViewById(R.id.spinnerYear)
             resultYear = dialog.findViewById(R.id.resultYear)
-            optionMonth = dialog.findViewById(R.id.spinnerMonth)
+            optionMonth = dialog.findViewById(R.id.spinnerLang)
             resultMonth = dialog.findViewById(R.id.resultMonth)
             optionDay = dialog.findViewById(R.id.spinnerDay)
             resultDay = dialog.findViewById(R.id.resultDay)
@@ -363,7 +392,7 @@ class MainActivity : AppCompatActivity() {
             dialog.show()
         }
 
-        // retrieve events from Firebase
+        // retrieve events from Firebase ][
         var emailNew = email.dropLast(10)
         val reference = firebaseDatabase.getReference("Users/$emailNew")
         reference.addValueEventListener(object : ValueEventListener {
